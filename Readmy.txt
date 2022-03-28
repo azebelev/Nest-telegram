@@ -1,0 +1,115 @@
+npm i -g @nestjs/cli
+
+nest               'will show option'
+
+nest g mo product --no-spec
+nest g co product
+                 path               moduleName
+                 ||                  ||
+nest g class dto/create-product.dto product
+
+tsconfig   ++   
+    "strict": true,
+    "skipLibCheck": true,
+    "strictPropertyInitialization": false
+
+npm i tslint -D
+
+
+                 DOCKER
+
+                 example of docker-compose :
+
+version: '3'
+services:
+  mongo:
+    image: mongo:4.4.4
+    container_name: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo-data-4.4:/data/db
+       ||
+       \/
+       docker-compose up -d
+
+        example Dockerfile:
+
+Dockerfile {
+    FROM node
+    WORKDIR /app
+    COPY package.json /app
+    RUN npm install
+    COPY . .
+    EXPOSE $PORT
+    CMD ["node","app.js"]
+} 
+
+
+docker pull node
+docker build -t somename:someversion .
+docker images
+docker ps --help
+docker ps -all
+docker ps       only enabled
+docker run?stop _id
+docker run -d -p port:port --name somename _id 
+docker container prune      delete all
+  1     2   3  4  5  6       7         8            9    10    11      12
+docker run -d -p 80:3000 --env-file ./config/.env -rm --name superApp imageName
+
+3 - do not be inside process
+4 - port flag
+5 - active port for user
+6 - port for Api
+7 - env flag
+8 - path to env
+9 - would not save current container
+
+        TYPEGOOSE
+npm install --save @typegoose/typegoose @nestjs/common @nestjs/core mongoose
+npm install --save-dev @types/mongoose
+
+        Validate
+npm i class-transformer class-validator
+
+        Test
+npm i -g autocannon
+autocannon http://localhost:3000/api/review/byProduct/621d0fb1bb2871c2759311c8
+      
+            Auth
+   npm i bcryptjs  
+   npm i -D @types/bcryptjs      
+   npm i @nestjs/jwt 
+  npm i -g passport
+npm i @nestjs/passport passport passport-jwt
+
+          File
+npm i fs-extra  + types
+npm i app-root-path    +types   
+npm i date-fns    
+npm i sharp          +types        
+         Serve-static
+npm i @nestjs/serve-static  
+        Seo
+npm i xml2js      +types   
+         CRON 
+npm i @nestjs/schedule          
+npm i -D @types/cron
+imports:[ScheduleModule.forRoot()]
+
+ @Cron(CronExpression.EVERY_DAY,{name:'task_1'})
+ doSometh() {
+   .......
+ }
+after injection :     constructor(private scheduleRegistry:ScheduleRegistry) {} 
+available       :
+
+const job = this.scheduleRegistry.getCronJob('task1')
+job.start
+job....
+ 
