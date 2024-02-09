@@ -18,7 +18,7 @@ export class TelegramModule {
   private static createAsyncOptionsProvider(options: ITelegramModuleAsyncOptions): Provider {
     return {
       provide: TELEGRAM_MODULE_OPTIONS,
-      // tslint:disable-next-line: no-any
+      // tslint:disable-next-line: no-any a
       useFactory: async (...args: any[]) => {
         const config = options.useFactory(...args);
         return config;
